@@ -1,5 +1,6 @@
 from keras.models import *
 from keras.layers import *
+from keras import initializers
 import tensorflow as tf
 
 class L2Norm(Layer):
@@ -8,7 +9,7 @@ class L2Norm(Layer):
     '''
     def __init__(self, weights=None, axis=-1, gamma_init='zero', n_channels=256, scale=10, **kwargs):
         self.axis = axis
-        self.gamma_init = initializations.get(gamma_init)
+        self.gamma_init = initializers.get(gamma_init)
         self.initial_weights = weights
         self.n_channels = n_channels
         self.scale = scale
