@@ -24,7 +24,7 @@ class FaceParser():
     def remove_detector(self):
         self.detector = None
     
-    def parse_face(self, im, bounding_box=None, with_detection=False):
+    def parse_face(self, im, bounding_box=None, with_detection=False, get_faces=False):
         orig_h, orig_w = im.shape[:2]
         
         # Detect/Crop face RoI
@@ -69,6 +69,8 @@ class FaceParser():
                 (orig_w, orig_h), 
                 interpolation=cv2.INTER_NEAREST)
             maps.append(parsing_map)
+        if get_faces:
+            return maps, faces
         return maps
         
     @staticmethod
